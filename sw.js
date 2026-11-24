@@ -1,4 +1,4 @@
-const CACHE="mi-control-offline-v3";
+const CACHE="mi-control-offline-v4";
 const FILES=["./","./index.html","./app-data.b64","./manifest.webmanifest","./icon.svg"];
 self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
